@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="popup.css" />
+  <title>ProtonVPN Config Downloader</title>
+</head>
+<body>
+  <header>
+    <h1>ProtonVPN Config Downloader</h1>
+    <span id="authState" class="badge">checking…</span>
+  </header>
+
+  <section class="controls">
+    <div class="row">
+      <label for="threshold">Max load %</label>
+      <input type="number" id="threshold" min="0" max="100" value="75" />
+      <label class="inline"><input type="checkbox" id="freeOnly" checked /> Free only (Tier&nbsp;0)</label>
+    </div>
+    <div class="row">
+      <label for="protocol">Format</label>
+      <select id="protocol">
+        <option value="WG" selected>WireGuard (.conf)</option>
+        <option value="UDP">OpenVPN UDP</option>
+        <option value="TCP">OpenVPN TCP</option>
+      </select>
+      <span id="platformWrap">
+        <label for="platform">Platform</label>
+        <select id="platform">
+          <option value="Linux" selected>Linux</option>
+          <option value="Windows">Windows</option>
+          <option value="macOS">macOS</option>
+          <option value="Router">Router</option>
+        </select>
+      </span>
+      <button id="scanBtn" class="primary">Scan servers</button>
+    </div>
+  </section>
+
+  <section class="listhead" id="listHead" hidden>
+    <div class="row spread">
+      <label class="inline"><input type="checkbox" id="selectAll" checked /> <b><span id="matchCount">0</span></b> servers ≤ <span id="thrLabel">75</span>% · <span id="scanInfo" class="muted"></span></label>
+      <button id="dlBtn" class="accent">Download .conf</button>
+    </div>
+  </section>
+
+  <main id="serverList"></main>
+
+  <section id="progressWrap" hidden>
+    <div class="bar"><div id="progressBar"></div></div>
+    <div class="row spread">
+      <div id="progressText" class="muted small"></div>
+      <div class="row">
+        <button id="pauseBtn" hidden>Pause</button>
+        <button id="cancelBtn" hidden class="danger">Cancel</button>
+      </div>
+    </div>
+    <pre id="log"></pre>
+  </section>
+
+  <p id="error" class="error" hidden></p>
+
+  <script src="popup.js"></script>
+</body>
+</html>
