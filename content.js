@@ -36,7 +36,8 @@ chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
     try {
       const headers = {
         Accept: "application/vnd.protonmail.v1+json",
-        "x-pm-appversion": "web-vpn-settings@5.0.353.0",
+        "x-pm-appversion": "web-vpn-settings@5.0.418.0",
+        "x-pm-uid": "5hflmmtbvgu2meki5fcmvqpsxs4xhkno",
       };
       const uid = findUid();
       if (uid) headers["x-pm-uid"] = uid;
